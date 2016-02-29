@@ -30,9 +30,14 @@ def feature_engineering(_df, get_dummies=False):
     _df['Title_'] = _df['Name'].apply(lambda x: x.replace('.',',').split(',')[1].strip())
 
     # Cabin:
-    _df['Cabin_'] = _df['Cabin'].apply(lambda x: np.NaN if isinstance(x, float) else x[0]) # NaN is no problem for get_dummies
+    _df['Cabin_'] = _df['Cabin'].apply(lambda x: 'X' if isinstance(x, float) else x[0])
+    # NaN is no problem for get_dummies
+    # However let's try to keep it as a feature called X
 
-    df_return = _df[['Age_','Age_b','HasAge','Sex','Pclass','Fare_','HasFare','Title_','Embarked','Cabin_','SibSp_','Parch_']]
+    # Embarked:
+    _df['Embarked_'] = _df['Embarked'].apply(lambda x: 'X' if isinstance(x, float) else x)
+
+    df_return = _df[['Age_','Age_b','HasAge','Sex','Pclass','Fare_','HasFare','Title_','Embarked_','Cabin_','SibSp_','Parch_']]
 
 
     if get_dummies:
