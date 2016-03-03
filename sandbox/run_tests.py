@@ -13,7 +13,7 @@ from Model import GenderModel
 #
 # print "Result of model_1 is %d." % result
 model1 = Model()
-result = test_model(model1)
+result = test_model(model1, 50)
 
 model2 = GenderModel()
-result = test_model(model2)
+result = test_model(model2, 50)
