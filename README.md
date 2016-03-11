@@ -44,3 +44,27 @@ nephews/nieces, aunts/uncles, and in-laws.  Some children travelled
 only with a nanny, therefore parch=0 for them.  As well, some
 travelled with very close friends or neighbors in a village, however,
 the definitions do not support such relations.
+
+# Current Score:
+
+## Current Kaggle public score: 0.8134
+
+Reached by
+```
+feature = ['Pclass','FamilySurvived', 'FamilyDied',
+          'Title_s_Master', 'Title_s_Miss', 'Title_s_Mr', 'Title_s_Mrs',
+          ]
+clf = RandomForestClassifier(n_estimators=1000,
+                                       criterion='entropy',
+                                       random_state=1,
+                                       min_samples_split=2,
+                                       min_samples_leaf=2,
+                                       max_features='auto',
+                                       bootstrap=True,
+                                       oob_score=True,
+                                       max_depth=3,
+                                       n_jobs=-1)
+```
+With `max_depth=4` the Kaggle score gets lower, however the local CV score gets a little higher.
+
+Check Demo2 ipython notebook for details.
